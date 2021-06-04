@@ -110,7 +110,6 @@ class Display:
             fontIngredients = ImageFont.truetype(os.path.join(fontdir, 'arial.ttf'), 23)
             fontDescription = ImageFont.truetype(os.path.join(fontdir, 'arial.ttf'), 18)
 
-
             #Create Canvas
             #
             Himage = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
@@ -138,7 +137,6 @@ class Display:
                               font=fontTitleTwoLines, fill=0)
                     line += 1
 
-
             # Display the times
             timesString = " \n".join(self.myRecipe.time)
             draw.text((10, 10), timesString, font=fontTimes, fill=0)
@@ -154,7 +152,6 @@ class Display:
             ingLines = 0
             if (self.currentIngredientPage > 0):
                 ingLines = 1
-
 
             w, h = draw.textsize("Zutaten", font=fontIngredients)
             draw.text((((boxEndX - w)/2) + 10, boxStartY  + (ingLines * 30)),
@@ -176,28 +173,20 @@ class Display:
                 ingLines += currentNumberLines
 
             #draw indication for more ingredients
-
             if (self.currentIngredientPage == 0 and len(self.ingredientPages.pages) > 1):
                 #draw more arrow at the bottom
-                #draw.rectangle((boxStartX + 5, boxEndY - 15, boxEndX - 5, boxEndY - 5), fill=0)
-                #draw.polygon((boxStartX + 140, boxEndY - 15, boxEndX - 140, boxEndY - 15, (boxEndX / 2) + (boxStartX -3), boxEndY - 3 ), fill=0) old
-                draw.polygon((boxMiddleX - 15, boxEndY - 15, boxMiddleX + 15, boxEndY - 15, boxMiddleX, boxEndY - 3 ), fill=0)
-
+                 draw.polygon((boxMiddleX - 15, boxEndY - 15, boxMiddleX + 15, boxEndY - 15, boxMiddleX, boxEndY - 3 ), fill=0)
             if (self.currentIngredientPage > 0 and self.currentIngredientPage < len(self.ingredientPages.pages)-1):
                 draw.polygon(
                     (boxMiddleX - 15, boxStartY + 15, boxMiddleX + 15, boxStartY + 15, boxMiddleX, boxStartY + 3),
                     fill=0)
-
                 draw.polygon((boxMiddleX - 15, boxEndY - 15, boxMiddleX + 15, boxEndY - 15, boxMiddleX, boxEndY - 3 ), fill=0)
-
             if(self.currentIngredientPage > 0 and self.currentIngredientPage == len(self.ingredientPages.pages)-1):
                 draw.polygon(
                     (boxMiddleX - 15, boxStartY + 15, boxMiddleX + 15, boxStartY + 15, boxMiddleX, boxStartY + 3),
                     fill=0)
 
-
             #draw description pages
-            # currentPage = self.descriptionPages.pages[myDescriptionPage]
             currentPage = self.descriptionPages.pages[self.currentDescriptionPage]
             mylines = 0;
             for p in currentPage:
@@ -207,13 +196,9 @@ class Display:
 
 
             #Draw page number
-
             draw.text((epd.width -50, epd.height - 20),
                       str(self.currentDescriptionPage + 1) + " / " + str(len(self.descriptionPages.pages)), font=fontDescription, fill=0)
-
-
             epd.display(epd.getbuffer(Himage))
-
             logging.info("Goto Sleep...")
             epd.sleep()
 

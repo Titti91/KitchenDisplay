@@ -40,10 +40,7 @@ class Server(BaseHTTPRequestHandler):
             jsonData = json.loads(post_data.decode('utf-8').replace("\\", ""))
 
 
-            #myRecipe muss eine globale variabe im server werden, wie?
-            #############################################################
-            ##########################################################
-            global myRecipe  # einkommentieren befor das auf den pi geschoben wird #
+            global myRecipe  # einkommentieren bevor das auf den pi geschoben wird
             myRecipe = myScraper.scrapeWeb(jsonData["url"])
             self.initializeDisplay()
 
@@ -81,13 +78,6 @@ class Server(BaseHTTPRequestHandler):
         myDisplay.updateDisplay()
     def initializeDisplay(self):
         #print(self.myRecipe.prettyPrint())
-
-        # myDisplay.ingredientPages.pages = list()    #in display auslagern
-        # myDisplay.currentIngredientPage = 0         #in display auslagern
-        # myDisplay.descriptionPages.pages = list()   #in display auslagern
-        # myDisplay.currentDescriptionPage = 0        #in display auslagern
-        # myDisplay.updateDisplay(myRecipe, 0, 0)  # einkommentieren befor das auf den pi geschoben wird
-
         myDisplay.initDisplay(myRecipe)
 
 def run(server_class=HTTPServer, handler_class=Server, port=8080):
