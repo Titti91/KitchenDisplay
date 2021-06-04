@@ -12,9 +12,7 @@ if os.path.exists(libdir):
 
 import logging
 from waveshare_epd import epd7in5_HD
-import time
 from PIL import Image, ImageDraw, ImageFont
-import traceback
 import textwrap
 from Recipe import Recipe
 
@@ -215,12 +213,6 @@ class Display:
 
 
             epd.display(epd.getbuffer(Himage))
-            #time.sleep(5)
-
-
-            #logging.info("Clear...")
-            #epd.init()
-            #epd.Clear()
 
             logging.info("Goto Sleep...")
             epd.sleep()
@@ -253,13 +245,8 @@ class Display:
             epd = epd7in5_HD.EPD()
             logging.info("init and Clear")
             epd.init()
-            oldRandValue = -1
-            randValue = random.randrange(1, 12)  #inclusive, exclusive
-            while randValue == oldRandValue :
-                randValue = random.randrange(1, 12)  # inclusive, exclusive
-            oldRandValue = randValue
-
-            Himage = Image.open(os.path.join(picdir, 'screensaver' + str(randValue) + '.bmp'))
+            bitmap = random.choice(os.listdir(picdir))      #choose a random image from pic folder
+            Himage = Image.open(os.path.join(picdir, bitmap))
             epd.display(epd.getbuffer(Himage))
             logging.info("Goto Sleep...")
             epd.sleep()
