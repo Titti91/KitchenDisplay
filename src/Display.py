@@ -6,6 +6,7 @@ import os
 
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
+fontdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'font')
 if os.path.exists(libdir):
     sys.path.append(libdir)
 
@@ -105,11 +106,11 @@ class Display:
             epd.init()
             #epd.Clear()        #try to avoid clearing the display every time
 
-            fontTitle = ImageFont.truetype(os.path.join(picdir, 'arial.ttf'), 35)
-            fontTitleTwoLines = ImageFont.truetype(os.path.join(picdir, 'arial.ttf'), 30)
-            fontTimes = ImageFont.truetype(os.path.join(picdir, 'arial.ttf'), 14)
-            fontIngredients = ImageFont.truetype(os.path.join(picdir, 'arial.ttf'), 23)
-            fontDescription = ImageFont.truetype(os.path.join(picdir, 'arial.ttf'), 18)
+            fontTitle = ImageFont.truetype(os.path.join(fontdir, 'arial.ttf'), 35)
+            fontTitleTwoLines = ImageFont.truetype(os.path.join(fontdir, 'arial.ttf'), 30)
+            fontTimes = ImageFont.truetype(os.path.join(fontdir, 'arial.ttf'), 14)
+            fontIngredients = ImageFont.truetype(os.path.join(fontdir, 'arial.ttf'), 23)
+            fontDescription = ImageFont.truetype(os.path.join(fontdir, 'arial.ttf'), 18)
 
 
             #Create Canvas
