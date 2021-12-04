@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="b5a08ad3-80c3-446d-82c0-6ba39729a835" name="KitchenDisplay" url="http://raspberrypi.local">
-        <fileTransfer accessType="SFTP" host="raspberrypi.local" port="22" sshConfigId="75690c01-d85a-4b94-8ee9-b2556ea4072e" sshConfig="pi@raspberrypi.local:22 password">
+      <webServer id="b5a08ad3-80c3-446d-82c0-6ba39729a835" name="KitchenDisplay" url="">
+        <fileTransfer accessType="SFTP" host="192.168.178.72" port="22" sshConfigId="75690c01-d85a-4b94-8ee9-b2556ea4072e" sshConfig="pi@192.168.178.72:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
