@@ -75,6 +75,7 @@ Der Pi lässt sich auch über SSH einrichten. (https://www.raspberrypi.org/docum
 7.	CronTab für das automatische Starten des Servers anlegen:
        1.   `crontab -e`  
        2.   Folgende Zeile an die eigenen Bedürfnisse und Gegebenheiten anpassen, einfügen und speichern: `@reboot /usr/bin/python3 /home/pi/KitchenDisplay/src/Server.py >> ~/cron.log 2>&1`
+       3.   Für das Einrichten eines automatischen Hintergrundbildwechsels folgende Zeile aufnehmen: `0 1 * * * /usr/bin/python3 /home/pi/KitchenDisplay/src/Screensaver.py` (Jeden Tag um 1 Uhr morgens)
 8.	Den Pi neu starten um den Server starten 
         1.  `sudo reboot`
         2.  Standardport: `8080`
